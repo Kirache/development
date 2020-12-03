@@ -1,0 +1,49 @@
+.navbar-class {
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 3px;
+	padding-right: 3px;
+	margin-bottom: 5px;
+}
+
+.navbar-class a{
+    text-decoration: none;
+	color: grey;
+}
+
+.nav-class {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-bottom: 10px;
+	white-space: nowrap;
+}
+
+.nav-item {
+    display:inline-block;
+	height: 20px;
+}
+
+.nav-item:first-child{
+	margin-left: 10px;
+}
+
+.nav-link {
+	padding-left: 7px;
+	padding-right: 7px;
+}
+
+.nav-item > .active {
+  color: black;
+}
+
+.reset a{
+	color: black !important;
+	background-color: lightgrey;
+}
+
+@media only screen and (max-width: 880px) {
+	.navbar-class {
+
+	}
+}

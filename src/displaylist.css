@@ -1,0 +1,68 @@
+.item button {
+	width: 40px;
+	margin-left: 5px;
+}
+
+.details {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	margin-left: 5px;
+	width: 120px;
+}
+
+.item {
+	display: flex;
+	flex-direction: row;
+	height: 100px;
+	width: 275px;
+	padding: 10px 10px;
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 10px;
+	margin-right: 10px;
+	margin-left: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.navbar-class {
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+.display-list {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+
+.Pyro {
+	color: red;
+}
+
+.Anemo {
+	color: darkgreen;
+}
+
+.Hydro {
+	color: blue;
+}
+
+.Geo {
+	color: darkorange;
+}
+
+.Electro {
+	color: purple;
+}
+
+.Cryo {
+	color: grey;
+}
+
+@media only screen and (max-width: 942px) {
+	.display-list {
+		justify-content: center;
+	}
+}

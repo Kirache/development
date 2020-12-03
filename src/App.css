@@ -1,0 +1,22 @@
+img {
+	height: 100px;
+	width: 100px;
+}
+
+.App {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	background-color: #a7cadb;
+	padding: 10px 20px;
+}
+
+.bottom {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+}
+
+.center {
+    max-width: 880px;
+}
