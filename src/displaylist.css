@@ -61,7 +61,7 @@
 	color: grey;
 }
 
-@media only screen and (max-width: 942px) {
+@media only screen and (max-width: 943px) {
 	.display-list {
 		justify-content: center;
 	}
