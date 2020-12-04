@@ -32,6 +32,6 @@ Allows user to change amount of and remove characters from owned section through
 
 ### Aggregator Section Display Order:
 
-Order of characters displayed in the Aggregator is managed through the order values of each character object. Before displaying, the list of characters is sorted by increasing order value. Order value represents only the relative placement of characters in the list, it is not an index. 
+Order of characters displayed in the Aggregator is managed through the order values of each character object. Before displaying, the list of characters is sorted by decreasing order value so that the latest character is displayed at the top of the list. Order value represents only the relative placement of characters in the list, it is not an index. 
 
 Each time a character not currently owned is added through the + button from DisplayList, it is updated to have the highest order number. The order number will be 1 higher than the last order number given to any character, which is stored in App's state.

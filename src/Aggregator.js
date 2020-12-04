@@ -21,8 +21,9 @@ export default class Aggregator extends React.Component {
 
     // Sorting function for determining which item was added first
     // Used for displaying items in Owned section in correct order
+    // Items with highest order (added most recently) are displayed first
 	orderSorter = (a,b) => {
-		return a.order - b.order
+		return b.order - a.order
 	}
 
     // Maps owned characters stored in App.js to an HTML div for render
