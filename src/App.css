@@ -3,11 +3,14 @@ img {
 	width: 100px;
 }
 
+body {
+	background-color: #a7cadb;
+}
+
 .App {
 	display: flex;
 	justify-content: center;
 	text-align: center;
-	background-color: #a7cadb;
 	padding: 10px 20px;
 }
 
