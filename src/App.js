@@ -1,14 +1,17 @@
+// Contains the character list and passes it to FilteredList component
+// Gives Aggregator access to the character list through getList() function
+// and allows it to make changes with addToList(), remove(), decrease()
+
 import React from "react";
 import FilteredList from './FilteredList';
 import './App.css';
 import Aggregator from './Aggregator.js';
 
-//contains the product list and passes it to FilteredList component
-
 export default class App extends React.Component {
     constructor(props) {
         super(props);
 
+        // Dictionary of characters
         this.state = {
             characterDict: {"Zhongli" : { name: "Zhongli", weapon: "Polearm", element: "Geo", star: "5", whalelevel: 10, owned: 0, order: 0, image: "./images/Zhongli.png"},
                     "Tartaglia" : { name: "Tartaglia", weapon: "Bow", element: "Hydro", star: "5", whalelevel: 10, owned: 0, order: 0, image: "./images/Tartaglia.png"},
@@ -27,6 +30,7 @@ export default class App extends React.Component {
         };
     }
 
+    // Adds 1 copy of character to owned characters by increasing owned by 1
     addToList = name => {
         var temp = this.state.characterDict;
         if (temp[name].owned === 0) {
@@ -41,6 +45,7 @@ export default class App extends React.Component {
         })
     }
 
+    // Removes character from owned characters by setting owned to 0
     remove = name => {
         var temp = this.state.characterDict;
         temp[name].owned = 0;
@@ -49,6 +54,7 @@ export default class App extends React.Component {
         })
     }
 
+    // Removes 1 copy of character from owned characters by decreasing owned by 1
     decrease = name => {
         var temp = this.state.characterDict;
         temp[name].owned -= 1;
@@ -57,12 +63,13 @@ export default class App extends React.Component {
         })
     }
 
+    // Returns the list of characters
     getList = () => {
         return Object.values(this.state.characterDict)
     }
 
+    // Renders application
     render() {
-
         return (
             <div className="App">
                 <div className="center">

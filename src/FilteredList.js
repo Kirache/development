@@ -1,4 +1,4 @@
-//contains filtering/sorting/aggregator methods
+// Contains filtering/sorting methods for the character selection area
 import './filteredlist.css';
 import React from "react";
 import Navbar from 'react-bootstrap/Navbar';
@@ -9,6 +9,7 @@ export default class FilteredList extends React.Component {
     constructor(props) {
         super(props);
 
+        // Stores currently selected filters
         this.state = {
 			weapon: "All",
 			element: "All",
@@ -17,12 +18,14 @@ export default class FilteredList extends React.Component {
         };
     }
 
+    // Sets current element filter to event
 	onSelectFilterElement = event => {
 		this.setState({
 			element: event
 		})
 	};
 
+    // Checks if item is of the filtered star
 	matchesFilterStar = item => {
 		if(this.state.star === "All") {
 			return true
@@ -33,12 +36,14 @@ export default class FilteredList extends React.Component {
 		}
 	}
 
+    // Sets current star/rarity filter to event
 	onSelectFilterStar = event => {
 		this.setState({
 			star: event
 		})
 	};
 
+    // Checks if item is of the filtered element
 	matchesFilterElement = item => {
 		if(this.state.element === "All") {
 			return true
@@ -49,12 +54,14 @@ export default class FilteredList extends React.Component {
 		}
 	}
 
+    // Sets current weapon filter to event
 	onSelectFilterWeapon = event => {
 		this.setState({
 			weapon: event
 		})
 	};
 
+    // Checks if item is of the filtered weapon
 	matchesFilterWeapon = item => {
 		if(this.state.weapon === "All") {
 			return true
@@ -65,23 +72,23 @@ export default class FilteredList extends React.Component {
 		}
 	}
 
+    // Sets current sorting order to event
 	onSelectSortWhale = event => {
 		this.setState({
 			whaleSort: event
 		})
 	}
 
+    // Sorting method by whale level
 	chooseSort = (a,b) => {
+        // Sort by descending whale level
 		if(this.state.whaleSort === "Descending") {
 			return b.whalelevel - a.whalelevel
 		}
+        // Sort by ascending whale level
 		else {
 			return a.whalelevel - b.whalelevel
 		}
-	}
-
-	addItem = item => {
-
 	}
 
     render() {
@@ -100,6 +107,7 @@ export default class FilteredList extends React.Component {
 						<Nav.Link eventKey="4" onSelect={this.onSelectFilterStar}>4*</Nav.Link>
 					</Nav.Item>
 				</Nav>
+
 				<Nav className="nav-class">
 					Element :
 					<Nav.Item className="nav-item reset">
@@ -127,6 +135,7 @@ export default class FilteredList extends React.Component {
 						<Nav.Link eventKey="Geo" onSelect={this.onSelectFilterElement}>Geo</Nav.Link>
 					</Nav.Item>
 				</Nav>
+
 				<Nav className="nav-class">
 					Weapon :
 					<Nav.Item className="nav-item reset">
@@ -148,6 +157,7 @@ export default class FilteredList extends React.Component {
 						<Nav.Link eventKey="Catalyst" onSelect={this.onSelectFilterWeapon}>Catalyst</Nav.Link>
 					</Nav.Item>
 				</Nav>
+
 				<Nav className="nav-class">
 					Sort :
 					<Nav.Item className="nav-item active">
@@ -158,6 +168,7 @@ export default class FilteredList extends React.Component {
 					</Nav.Item>
 				</Nav>
 				</Navbar>
+
 				<DisplayList addToList={this.props.addToList} list={this.props.list.filter(this.matchesFilterElement)
 					.filter(this.matchesFilterWeapon)
 					.filter(this.matchesFilterStar)

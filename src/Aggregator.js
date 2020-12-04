@@ -1,16 +1,16 @@
-//maps each product from App.js to an HTML element or Component for render
+// Displays "Owned" characters section and computes Whale Level
+// Maps owned characters stored in App.js to an HTML element for render
+// Allows change in amount and removal of characters from owned section
 import React from "react";
 import './aggregator.css';
 
 export default class Aggregator extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-			list: []
-        };
     }
 
+    // Filtering function for if user owns at least one of the item.
+    // Returns true if owned, else false
 	ownsFilter = item => {
 		if(item.owned > 0) {
 			return true
@@ -19,14 +19,17 @@ export default class Aggregator extends React.Component {
 		}
 	}
 
-	owns = item => item.owned > 0;
-
+    // Sorting function for determining which item was added first
+    // Used for displaying items in Owned section in correct order
 	orderSorter = (a,b) => {
 		return a.order - b.order
 	}
 
+    // Maps owned characters stored in App.js to an HTML div for render
 	showList = () => {
+        // Filter and sort to get list of owned characters in order they were added
 		const list = this.props.getList().filter(this.ownsFilter).sort(this.orderSorter);
+
 		if (list.length > 0){
 			return list.map(item =>
 				<div className="agg-item">
@@ -49,14 +52,17 @@ export default class Aggregator extends React.Component {
 		}
 	}
 
+    // Accumulating function for total whale level of owned characters
 	reducer = (accumulator, item) => {
 		return accumulator + item.whalelevel*item.owned
 	}
 
+    // Returns total whale level of owned characters
 	total = () => {
 		return this.props.getList().reduce(this.reducer, 0)
 	}
 
+    // Render HTML "Owned" characters section with Total Whale Level
     render() {
         return (
             <div className="agg">

@@ -1,18 +1,11 @@
-//maps each product from App.js to an HTML element or Component for render
+//Maps each character to be displayed to an HTML element for render
 import React from "react";
 import './displaylist.css'
 
 export default class DisplayList extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-        };
     }
-
-	test = () => {
-		console.log("Test");
-	}
 
     render() {
         return (

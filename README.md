@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+README
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+CONCEPT :
+    This is a fun, silly website for calculating how big of a whale (big spender) someone is based on what characters they own or pulled in the game Genshin Impact. 
 
-## Available Scripts
+CODE DESIGN :
+    There are 4 components : App, FilteredList, DisplayList, Aggregator
 
-In the project directory, you can run:
+    App:
+        The main component, contains a FilteredList and an Aggregator component.
 
-### `npm start`
+        App contains a dictionary of the game characters as objects in its state. Each character object has a value of name, weapon, element, star, whalelevel, order, and image. 
+        
+        This dictionary allows for easy access to a specific character to update its display order and amount of copies owned. App turns the dictionary into a list to give to FilteredList as a prop and to Aggregator through functions. App allows Aggregator to access and modify the dictionary in App by passing the functions addToList(), remove(), and decrease() as props to Aggregator. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    FilteredList:
+        Contains filtering/sorting methods for the character selection area.Also contains the bootstrap navbar for selecting filters, and a DisplayList component for displaying the characters. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+    DisplayList:
+        Maps each character from the list given to it as a prop from FilteredList to an HTML element for render. Allows user to add characters to the owned section through a + button. DisplayList updates the dictionary stored in App's state through the addToList() function when the user presses the + button.
 
-### `npm test`
+    Aggregator:
+        Displays owned characters section and computes total whale level. Maps owned characters stored in App.js dictionary to an HTML element for render. 
+        
+        Allows user to change amount of and remove characters from owned section through +, -, and Remove buttons.When the user presses the buttons, Aggregator updates the dictionary stored in App's state through the addToList(), decrease(), and remove() functions respectively. The functions are pased as props to Aggregator.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    Aggregator Section Display Order:
+        Order of characters displayed in the Aggregator is managed through the order values of each character object. Before displaying, the list of characters is sorted by increasing order value. Order value represents only the relative placement of characters in the list, it is not an index. 
+        
+        Each time a character not currently owned is added through the + button from DisplayList, it is updated to have the highest order number. The order number will be 1 higher than the last order number given to any character, which is stored in App's state.
